@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        :root{
+                --main-color:#1d5be2;
+                --primary-bg-color:#fff;
+                --seconday-bg-color:#eee;
+                --primary-txt-color:#222;
+                --secondary-txt-color:#666;
+            }
+
+            *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-transform: capitalize;
+    font-family: 'Roboto', sans-serif;
+    outline: none; border: none;
+    text-decoration: none;
+    transition: all .3s ease;
+}
+
+*::selection{
+    background: var(--main-color);
+    color: var(--primary-bg-color);
+}
+
+html{
+    font-size: 62.5%;
+    overflow-x: hidden;
+}
+
+html::-webkit-scrollbar{
+    width: 1.3rem;
+}
+
+html::-webkit-scrollbar-track{
+    background-color: var(--seconday-bg-color);
+}
+
+html::-webkit-scrollbar-thumb{
+    background-color: var(--main-color);
+}
+
+
+body{
+    background: var(--seconday-bg-color);
+}
+
+body.dark-theme{
+    --primary-bg-color:#252C48;
+    --seconday-bg-color:#171C32;
+    --primary-txt-color:#fff;
+    --secondary-txt-color:#eee;
+}
+
+#menu{
+    font-size: 2rem;
+    color: var(--primary-bg-color);
+    background: var(--main-color);
+    border-radius: 5rem;
+    height: 5rem;
+    width: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    position: fixed;
+    top: 2rem; right: 2rem;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.navbar{
+    position: fixed;
+    top: 2.5rem; right: 2.4rem;
+    padding: 1.1rem 2rem;
+    padding-right: 4rem;
+    border: .2rem solid var(--main-color);
+    background: var(--primary-bg-color);
+    border-radius: 1rem;
+    z-index: 999;
+    opacity: 0;
+    transform-origin: top right;
+    transform: scale(0);
+}
+
+#menu.fa-times{
+    transform: rotate(-180deg);
+}
+
+.navbar.nav-toggle{
+    opacity: 1;
+    transform: scale(1);
+}
+
+.navbar a{
+    display: block;
+    padding: 1rem;
+    font-size: 2rem;
+    padding-right: 7rem;
+    color: var(--primary-txt-color);
+}
+
+.navbar a:hover{
+    color: var(--main-color);
+    transform: translateX(1rem);
+}
+
+section{
+    padding: 1rem;
+    padding: 0 8%;
+    min-height: 100vh;
+    margin-top: 7rem;
+}
+
+
+.btn{
+    padding: 1rem 3rem;
+    font-size: 2.5rem;
+    border-radius: 1rem;
+    color: #fff;
+    background: none;
+    display: inline-block;
+    z-index: 0;
+    position: relative;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.5) ;
+    margin-top: 1rem;
+    overflow: hidden;
+    border: .2rem solid var(--main-color);
+}
+
+
+.btn::before{
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 1rem;
+    background: var(--main-color);
+    transition: .2s linear;
+    z-index: -1;
+    height: 85%;
+    width: 90%;
+}
+
+.btn:hover:before{
+    top: 100%;
+    transform: translate(-50% , 100%);
+}
+
+
+.btn:hover{
+    color: var(--main-color);
+}
+
+
+.home{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.home .image{
+    flex: 1 1 40rem;
+    padding: 1rem;
+    text-align: center;
+}
+
+.home .image img{
+    height: 50rem;
+    margin-top: 10rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    border-top: 3rem solid var(--primary-bg-color);
+    border-right: 3rem solid var(--primary-bg-color);
+    border-left: 3rem solid var(--main-color);
+    border-bottom: 3rem solid var(--main-color);
+    border-radius: .5rem;
+}
+
+.home .content{
+    flex: 1 1 40rem;
+    padding: 1rem;
+}
+
+.home .content .hello{
+    display: inline-block;
+    font-size: 2.5rem;
+    padding: 1rem 0;
+    color: var(--secondary-txt-color);
+}
+
+
+.home .content h3{
+    font-size: 5rem;
+    color: var(--primary-txt-color);
+}
+
+.home .content h3 span{
+    color: var(--main-color);
+}
+
+.home .content p{
+    font-size: 2rem;
+    padding: 1rem 0;
+    color: var(--secondary-txt-color);
+}
+
+.heading{
+    font-size: 5rem;
+    color: var(--primary-txt-color);
+    text-align: center;
+    padding: 1rem;
+    text-transform: uppercase;
+}
+
+.heading span{
+    color: var(--main-color);
+    text-transform: uppercase;
+}
+
+.about .row{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.about .row .box{
+    flex: 1 1 40rem;
+    background-color: var(--primary-bg-color);
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    padding: .5rem 1.5rem;
+    margin: 1.5rem;
+}
+
+.about .row .box .title{
+    color: var(--primary-txt-color);
+    font-size: 2.5rem;
+    padding: 1rem 0;
+}
+
+.about .row .box .progress{
+    padding: 1rem 0;
+}
+
+.about .row .box .progress h3{
+    font-size: 1.5rem;
+    color: var(--secondary-txt-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.about .row .box .progress .bar{
+    border-radius: .5rem;
+    border: .2rem solid var(--main-color);
+    height: 2.5rem;
+    padding: .5rem;
+    margin-top: 1rem;
+}
+
+.about .row .box .progress .bar span{
+    background: var(--main-color);
+    display: block;
+    height: 100%;
+    width: 100%;
+    border-radius: .3rem;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(2) .bar span{
+    width: 95%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(3) .bar span{
+    width: 85%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(4) .bar span{
+    width: 60%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(5) .bar span{
+    width: 50%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(6) .bar span{
+    width: 60%;
+}
+
+.about .row .box:nth-child(1) .progress:nth-child(7) .bar span{
+    width: 40%;
+}
+
+/* professional skills*/
+
+.about .row .box:nth-child(2) .progress:nth-child(2) .bar span{
+    width: 75%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(3) .bar span{
+    width: 70%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(4) .bar span{
+    width: 40%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(5) .bar span{
+    width: 40%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(6) .bar span{
+    width: 30%;
+}
+
+.about .row .box:nth-child(2) .progress:nth-child(7) .bar span{
+    width: 60%;
+}
+
+
+.about .row .box .exp-box{
+    padding: 0 1.8rem;
+    border-left: .2rem solid var(--main-color);
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.about .row .box .exp-box h3{
+    color: var(--main-color);
+    font-size: 2rem;
+}
+
+.about .row .box .exp-box p{
+    font-size: 1.5rem;
+    color: var(--secondary-txt-color);
+    padding: 1rem 0;
+}
+
+.about .row .box .exp-box::before{
+    content: '';
+    top: 0; left: -1rem;
+    border-radius: 50%;
+    background: var(--main-color);
+    position: absolute;
+    height: 2rem;
+    width: 2rem;
+}
+
+.about .download{
+    text-align: center;
+    border-radius: .5rem;
+    background: var(--primary-bg-color);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.5);
+    padding: 2.5rem 0;
+    margin: 1rem 1rem;
+
+}
+
+
+.skills .heading{
+    margin-bottom: 2.5rem;
+}
+
+.skills .box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.skills .box-container .box{
+    flex: 1 1 30rem;
+    text-align: center;
+    padding: 2rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.5);
+    border-radius: .5rem;
+}
+
+.skills .box-container .box img{
+    height: 15rem;
+}
+
+.skills .box-container .box h3{
+    color: #1a1a1a;
+    margin: 1rem 0;
+    font-size: 2rem;
+}
+
+
+.services .heading{
+    margin-bottom: 7rem;
+}
+
+.services .box-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.services .box-container .box{
+    background: var(--primary-bg-color);
+    border-radius: .5rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    margin: 1rem;
+    padding: 1rem;
+    width: 35rem;
+    text-align: center;
+    z-index: 0;
+    position: relative;
+}
+
+
+.services .box-container .box .number{
+    position: absolute;
+    font-size: 2.5rem;
+    color: var(--primary-txt-color);
+    top: 1.5rem; left: 2rem;
+}
+
+
+.services .box-container .box img{
+    height: 7rem;
+    width: 7rem;
+    margin: 1rem;
+}
+
+
+.services .box-container .box h3{
+    font-size: 2rem;
+    color: var(--main-color);
+}
+
+
+.services .box-container .box p{
+    font-size: 1.5rem;
+    color: var(--secondary-txt-color);
+    padding: 1.5rem;
+}
+
+
+.services .box-container .box::before{
+    content: '';
+    position: absolute;
+    background: var(--main-color);
+    top: 0; left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    clip-path: circle(25% at 0 0);
+    opacity: .1;
+    transition: .3s;
+}
+
+
+.services .box-container .box:hover:before{
+    clip-path: circle(100%);
+}
+
+
+.portfolio .button-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+
+.portfolio .button-container .btn{
+    cursor: pointer;
+    margin: 1rem;
+}
+
+
+.portfolio .image-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding:  1rem 0;
+}
+
+
+.portfolio .image-container .box{
+    width: 35rem;
+    border-radius: .5rem;
+    margin: 1rem;
+    overflow: hidden;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    height: 25rem;
+    position: relative;
+    border: 1.5rem solid var(--primary-bg-color);
+    cursor: pointer;
+}
+
+
+.portfolio .image-container .box img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+.portfolio .image-container .box .info{
+    position: absolute;
+    background: var(--primary-bg-color);
+    top: 0; left: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    opacity: .9;
+    transform: scale(0);
+}
+
+.portfolio .image-container .box:hover .info {
+    transform: scale(1);
+}
+
+
+.portfolio .image-container .box .info h3{
+    font-size: 2.5rem;
+    color: var(--primary-txt-color);
+}
+
+
+.contact .row{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.contact .row form{
+    flex: 1 1 40rem;
+    background: var(--primary-bg-color);
+    padding: 2rem;
+    margin: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    border-radius: .5rem;
+}
+
+
+.contact .row .map{
+    flex: 1 1 40rem;
+    margin: 1rem;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    border-radius: .5rem;
+    border: 2rem solid var(--primary-bg-color);
+    width: 100%;
+}
+
+
+.contact .row form .inputbox{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.contact .row form input,
+.contact .row form textarea{
+    padding: 1rem 0;
+    margin: 1rem 0;
+    font-size: 1.7rem;
+    border-bottom: .5rem solid var(--secondary-txt-color);
+    background: none;
+    text-transform: none;
+    width: 100%;
+    color: var(--main-color);
+}
+
+
+.contact .row form input::placeholder,
+.contact .row form textarea::placeholder{
+    text-transform: capitalize;
+    color: var(--secondary-txt-color);
+
+}
+
+
+.contact .row form input:focus,
+.contact .row form textarea:focus{
+    border-color: var(--main-color);
+}
+
+.contact .row form .inputbox input{
+    width: 49%;
+}
+
+
+.contact .row form textarea{
+    resize: none;
+    height: 15rem;
+}
+
+
+.contact .row form .btn{
+    cursor: pointer;
+}
+
+
+.contact .box-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+
+.contact .box-container .box{
+    flex: 1 1 30rem;
+    margin: 1rem;
+    padding: 3rem 1rem;
+    background: var(--primary-bg-color);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    border-radius: .5rem;
+    text-align: center;
+}
+
+
+.contact .box-container .box i{
+    font-size: 3rem;
+    height: 6rem;
+    width: 6rem;
+    line-height: 6rem;
+    background: var(--seconday-bg-color);
+    border-radius: 50%;
+    color: var(--main-color);
+}
+
+
+.contact .box-container .box h3{
+    font-size: 2rem;
+    color: var(--primary-txt-color);
+    padding: 1rem 0;
+}
+
+
+.contact .box-container .box p{
+    font-size: 1.8rem;
+    color: var(--secondary-txt-color);
+}
+
+
+.footer{
+    padding: 2.5rem 1rem;
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--primary-txt-color);
+    background: var(--primary-bg-color);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.3);
+    margin-top: 1rem;
+}
+
+
+.footer span{
+    color: var(--main-color);
+}
+
+
+#theme-toggler{
+    position: fixed;
+    height: 5rem; width: 5rem;
+    top: 8.5rem; right: 2rem;
+    z-index: 998;
+    font-size: 2rem;
+    color: #fff;
+    text-align: center;
+    line-height: 5rem;
+    border-radius: 50%;
+    background: var(--main-color);
+    cursor: pointer;
+}
+
+
+#theme-toggler.fa-sun{
+    transform: rotate(-180deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 991px) {
+    html{
+        font-size: 55.5%;
+    }
+
+    section{
+        padding: 0 3%;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home .image img{
+        height: auto;
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 400px) {
+    html{
+        font-size: 50%;
+    }
+    .services .box-container .box{
+        width: 100%;
+    }
+    .portfolio .image-container .box{
+        width: 100%;
+    }
+    .contact .row form .inputbox input{
+        width: 100%;
+    }
+}    
+    </style>
+</head>
+<body>
+
+    <header>
+        <div id="menu" class="fas fa-bars"></div>
+
+        <nav class="navbar">
+            <a href="#home">home</a>
+            <a href="#about">about</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">services</a>
+            <a href="#portfolio">portfolio</a>
+            <a href="#contact">contact</a>
+        </nav>
+
+        <div id="theme-toggler">
+            <i class="fas fa-moon"></i>
+        </div>
+    </header>
+
+
+    <div class="home" id="home">
+        <div class="image">
+            <img src="Img/main-img (2).jpg" alt="Profile-pic">
+        </div>  
+        <div class="content">
+            <span class="hello">hello</span>
+            <h3>I'm <span>Dipayan Bose</span></h3>
+            <p> Hello, I'm a professional deverloper from India. I have worked on many development projects in frontend, fullstack, 
+                software. Building and creating is my passion and I love to follow it.
+            </p>
+            <a href="#about" class="btn">about me</a>
+        </div>
+    </div>
+
+
+    <section class="about" id="about">
+        <h1 class="heading">about <span>me</span> </h1>
+
+        <div class="row">
+            <div class="box">
+                <h3 class="title">Coding Skills</h3>
+                <div class="progress">
+                    <h3>html <span>95%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>css <span>85%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>javascript <span>60%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>sass <span>50%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>jquery <span>60%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>React <span>40%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">Professional Skills</h3>
+                <div class="progress">
+                    <h3>Communication <span>75%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>web design <span>70%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>Marketing <span>40%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>Management <span>40%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>Editing <span>30%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+                <div class="progress">
+                    <h3>Content <span>60%</span> </h3>
+                    <div class="bar"><span></span></div>
+                </div>
+            </div>
+
+            <div class="box">
+                <h3 class="title">experience</h3>
+                <div class="exp-box">
+                    <h3>Software developer Intern</h3>
+                    <p> Building responsive scalable products, by making it more user-friendly. Modifying the overall
+                    services of frontend and backend by integrating API changes with database and other components.
+                    </p>
+                </div>
+                <div class="exp-box">
+                    <h3>Content developer</h3>
+                    <p> Hey, everyone I'm a professional content developer.I loved to try and build nerw things each and everyday.
+                        I'm experienced in creating the fond of contents.
+                    </p>
+                </div>
+            </div>
+            <div class="box">
+                <h3 class="title">education</h3>
+                <div class="exp-box">
+                    <h3>Techno International New Town</h3>
+                    <p> Right now, I'm a final year student at my current institution.
+                    </p>
+                </div>
+                <div class="exp-box">
+                    <h3>St. Francis School</h3>
+                    <p> I completed my schooling few years back.</p>
+                </div>
+            </div>
+
+            
+        </div>
+
+        <div class="download">
+            <a href="#" class="btn">Dowload CV</a>
+        </div>
+    </section>
+
+
+    <section class="skills" id="skills">
+        <h1 class="heading">My<span>Skills</span> </h1>
+
+        <div class="box-container">
+            <div class="box">
+                <img src="Img/icon-1.png" alt="html">
+                <h3>Html5</h3>
+            </div>
+            <div class="box">
+                <img src="Img/icon-2.png" alt="css">
+                <h3>CSS3</h3>
+            </div>
+            <div class="box">
+                <img src="Img/icon-3.png" alt="js">
+                <h3>Javascript</h3>
+            </div>
+            <div class="box">
+                <img src="Img/icon-4.png" alt="sass">
+                <h3>Sass</h3>
+            </div>
+            <div class="box">
+                <img src="Img/icon-5.png" alt="jquery">
+                <h3>Jquery</h3>
+            </div>
+            <div class="box">
+                <img src="Img/icon-6.png" alt="react">
+                <h3>React</h3>
+            </div>
+            <div class="box">
+                <img src="Img/python.png" alt="python">
+                <h3>python</h3>
+            </div>
+            <div class="box">
+                <img src="Img/nodejs.png" alt="nodejs">
+                <h3>nodejs</h3>
+            </div>
+            <div class="box">
+                <img src="Img/php.png" alt="php">
+                <h3>php</h3>
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <section class="services" id="services">
+        <h1 class="heading">My<span>services</span> </h1>
+
+        <div class="box-container">
+            <div class="box">
+                <span class="number">1</span>
+                <img src="Img/s1.png" alt="">
+                <h3>seo marketing</h3>
+                <p>Will be ranking your websites on top searches. A quite experienced and dedicated to work.</p>
+            </div>
+            <div class="box">
+                <span class="number">2</span>
+                <img src="Img/content.png" alt="">
+                <h3>content</h3>
+                <p>I'm fond of creating contents.Done the best and most popular contents.</p>
+            </div>
+            <div class="box">
+                <span class="number">3</span>
+                <img src="Img/conversation.png" alt="">
+                <h3>communication</h3>
+                <p>I have wonderful presentation and communication skills.</p>
+            </div>
+            <div class="box">
+                <span class="number">4</span>
+                <img src="Img/coding.png" alt="">
+                <h3>web development</h3>
+                <p>I create,build and design the best, professional and the most demanding websites, with respect to the industry.</p>
+            </div>
+            <div class="box">
+                <span class="number">5</span>
+                <img src="Img/s4.png" alt="">
+                <h3>data analysis</h3>
+                <p>Doing research and analyse,with respect to as needed.</p>
+            </div>
+            <div class="box">
+                <span class="number">6</span>
+                <img src="Img/s6.png" alt="">
+                <h3>web design</h3>
+                <p>I design the best, professional and the most demanding websites, with respect to the industry.</p>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <h1 class="heading">My<span>portfolio</span> </h1>
+
+        <div class="button-container">
+            <div class="btn" data-filter="all">all</div>
+            <div class="btn" data-filter="design">design</div>
+            <div class="btn" data-filter="code">code</div>
+            <div class="btn" data-filter="website">website</div>
+            <div class="btn" data-filter="brand">brand</div>
+        </div>
+
+        <div class="image-container">
+            <div class="box design">
+                <img src="Img/img1.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box design">
+                <img src="Img/img2.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box design">
+                <img src="Img/img3.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box code">
+                <img src="Img/img4.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box code">
+                <img src="Img/img5.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box website">
+                <img src="Img/img6.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box brand">
+                <img src="Img/img7.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box brand">
+                <img src="Img/img8.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+            <div class="box brand">
+                <img src="Img/img9.jpg" alt="">
+                <div class="info">
+                    <h3>PROJECT TITLE</h3>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="contact" id="contact">
+        <h1 class="heading">My<span>contact</span> </h1>
+
+        <div class="box-container">
+            <div class="box">
+                <i class="fas fa-phone"></i>
+                <h3>My number</h3>
+                <p>+91-8617566866</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-envelope"></i>
+                <h3>My email</h3>
+                <p>bosedipayan2000@gmail.com</p>
+            </div>
+            <div class="box">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3>My address</h3>
+                <p>Mahamaya Road, Hijalpukuria, habra - 743263</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <form action="">
+                <div class="inputbox">
+                    <input type="text" placeholder="Name" required/>
+                    <input type="email" placeholder="E-mail" required />
+                </div>
+                <input type="text" placeholder="subject">
+                <textarea name="" id="" rows="10" cols="30" placeholder="message"></textarea>
+                <button class="btn">send message</button>
+            </form>
+
+            <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1838.5513986016774!2d88.65303762114371!3d22.8356859967915!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8b04216eb1e45%3A0x4dc1bf4df24ae128!2sMahamaya%20Rd%2C%20Habra%2C%20West%20Bengal%20743263!5e0!3m2!1sen!2sin!4v1641661340571!5m2!1sen!2sin"
+              allowfullscreen="" loading="lazy">
+            </iframe>
+
+        </div>
+    </section>
+
+    <div class="footer">
+        Created by <span> Dipayan Bose </span> <br/> <i class="fas fa-copyright"></i> 2024 - all right reserved
+    </div>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+    $('#menu').click(function(){
+        $(this).toggleClass('fa-times');
+        $('.navbar').toggleClass('nav-toggle');
+    });
+
+    $(window).on('scroll load',function(){
+        $('#menu').removeClass('fa-times');
+        $('.navbar').removeClass('nav-toggle');
+    })
+
+    $('.portfolio .button-container .btn').click(function() {
+
+        let create = $(this).attr('data-filter');
+
+        if(create === 'all')
+        {
+            $('.portfolio .image-container .box').show('400');
+        }
+        else
+        {
+            $('.portfolio .image-container .box').not('.'+create).hide('200');
+            $('.portfolio .image-container .box').create('.'+create).show('400');
+        }
+    });
+
+    $('#theme-toggler').click(function(){
+        $(this).toggleClass('fa-sun');
+        $('body').toggleClass('dark-theme');
+    });
+
+    $('a[href*="#"]').on('click',function(e) {
+        e.preventDefault();
+
+        $('html,body').animate({
+            scrollTop: $($(this).attr('href')).offset().top,
+        },
+        500,
+        'linear'
+        );
+    });
+});
+    </script>
+</body>
+</html>
